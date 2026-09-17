@@ -5,11 +5,12 @@ class Feedback:
 	"""feedback received before each decision"""
 
 	def __init__(
+			#FIX something here
 		self,
 		connected: bool = False,
 		armed: bool = False,
 		ready_to_fly: bool = False,
-		airborne: bool = False,
+		airborne: bool = True,
 		landed: bool = False,
 		disarmed: bool = False,
 		battery_percent: float = 100
@@ -30,7 +31,7 @@ class FSM:
 		States.ARMING: States.TAKEOFF,
 		States.TAKEOFF: States.HOVER,
 		States.HOVER: States.FLYING,
-		States.FLYING: States.LANDING,
+		#FILL OUT
 		States.LANDING: States.LANDED,
 		States.LANDED: States.DISARMED,
 	}
@@ -70,9 +71,9 @@ class FSM:
 			if (feedback.battery_percent<40):
 				return next_state
 			
-		if self.state == States.LANDING:
-			if (feedback.landed):
-				return next_state
+		# if self.state == States.LANDING:
+		# 	if (FILL OUT):
+		# 		return next_state
 			
 		if self.state == States.LANDED:
 			if (feedback.disarmed):
